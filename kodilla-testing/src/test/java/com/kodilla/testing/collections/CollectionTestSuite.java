@@ -1,4 +1,4 @@
-package com.codilla.testing.collections;
+package com.kodilla.testing.collections;
 
 
 import com.kodilla.testing.collection.OddNumbersExterminator;
@@ -22,31 +22,31 @@ public class CollectionTestSuite {
 
 
     @DisplayName("When list is empty then exterminate() method should return input list with warning")
-     @Test
+    @Test
     void testOddNumbersExterminatorEmptyList() {
 
         //Given
         OddNumbersExterminator oddNumbersExterminator = new OddNumbersExterminator();
 
-         List <Integer> testedList = new ArrayList<>();
-         int expectedResult =0;
+        List<Integer> testedList = new ArrayList<>();
+        int expectedResult = 0;
 
-         //When
-         int result = oddNumbersExterminator.exterminate(testedList).size();
+        //When
+        int result = oddNumbersExterminator.exterminate(testedList).size();
 
-         //Then
-         Assertions.assertEquals(expectedResult,result);
+        //Then
+        Assertions.assertEquals(expectedResult, result);
     }
 
     @DisplayName("When list contains different values exterminate() method should return list with only even values (first test)")
     @Test
-    void testOddNumbersExterminatorNormalList(){
+    void testOddNumbersExterminatorNormalList() {
         //Given
         OddNumbersExterminator oddNumbersExterminator = new OddNumbersExterminator();
 
 
         //When
-        List <Integer> testedList = new ArrayList<>();
+        List<Integer> testedList = new ArrayList<>();
         testedList.add(-2);
         testedList.add(-1);
         testedList.add(0);
@@ -54,13 +54,13 @@ public class CollectionTestSuite {
         testedList.add(2);
         testedList.add(3);
 
-        List<Integer>expectedList =new ArrayList<>();
+        List<Integer> expectedList = new ArrayList<>();
         expectedList.add(-2);
         expectedList.add(0);
         expectedList.add(2);
 
         //Then
-        Assertions.assertEquals(expectedList,oddNumbersExterminator.exterminate(testedList));
+        Assertions.assertEquals(expectedList, oddNumbersExterminator.exterminate(testedList));
     }
 
 
@@ -68,17 +68,17 @@ public class CollectionTestSuite {
 
     @DisplayName("When list contains different values exterminate() method should return list with only even values (second test)")
     @Test
-    void testOddNumbersExterminatorNormalList2(){
+    void testOddNumbersExterminatorNormalList2() {
 
         //Given
         OddNumbersExterminator oddNumbersExterminator = new OddNumbersExterminator();
 
         //When
-        List <Integer> testedList =Arrays.asList(-2,-1,0,1,2,3);
-        List<Integer>expectedList =Arrays.asList(-2,0,2);
+        List<Integer> testedList = Arrays.asList(-2, -1, 0, 1, 2, 3);
+        List<Integer> expectedList = Arrays.asList(-2, 0, 2);
 
         //Then
-        Assertions.assertEquals(expectedList,oddNumbersExterminator.exterminate(testedList));
+        Assertions.assertEquals(expectedList, oddNumbersExterminator.exterminate(testedList));
     }
 }
 
