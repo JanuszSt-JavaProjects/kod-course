@@ -12,14 +12,13 @@ import org.mockito.junit.jupiter.MockitoExtension;
 import java.util.HashMap;
 import java.util.Map;
 
-import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.when;
 
-@ExtendWith(MockitoExtension.class)
+@ExtendWith(MockitoExtension.class)     // musi być, żeby poniższy zapis działał.
 class WeatherForecastTestSuite {
 
-    @Mock
-    Temperatures temperaturesMock = mock(Temperatures.class);
+    @Mock                               // konieczna adnotacja żeby nie musieć pisać "=mock(Temperatures.class)"
+    Temperatures temperaturesMock;// = mock(Temperatures.class);
 
     Map<String, Double> temperaturesMap = new HashMap<>();
 
