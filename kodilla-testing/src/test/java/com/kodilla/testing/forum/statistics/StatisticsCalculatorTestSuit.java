@@ -15,7 +15,7 @@ import static org.mockito.Mockito.when;
 public class StatisticsCalculatorTestSuit {
 
     @Mock
-    Statistics statisticsMock;// = mock(Statistics.class);
+    Statistics statisticsMock;
     StatisticsCalculator statisticsCalculator = new StatisticsCalculator();
 
     private List<String> fillUsersList(int numberOfUsers) {
@@ -30,147 +30,112 @@ public class StatisticsCalculatorTestSuit {
     @Test
     void testCalculateAdvStatistics_withOneThousandPosts() {
         //Given
-        when(statisticsMock.postsCount()).thenReturn(1000);                             // Posts number
-        when(statisticsMock.usersNames()).thenReturn(fillUsersList(10));   // Users number
-        when(statisticsMock.commentsCount()).thenReturn(100);                          // Comments number
-        statisticsCalculator.calculateAdvStatistics(statisticsMock);
+        when(statisticsMock.postsCount()).thenReturn(1000);
+        when(statisticsMock.usersNames()).thenReturn(fillUsersList(10));
+        when(statisticsMock.commentsCount()).thenReturn(100);
 
         //When
-        double averagePostsPerUser = statisticsCalculator.getAveragePostsPerUser();
-        double averageCommentsPerUser = statisticsCalculator.getAverageCommentsPerUser();
-        double averageCommentsPerPost = statisticsCalculator.getAverageCommentsPerPost();
+        statisticsCalculator.calculateAdvStatistics(statisticsMock);
 
         //Then
-        statisticsCalculator.showStatistics();
-
-        Assertions.assertEquals(100, averagePostsPerUser);
-        Assertions.assertEquals(10, averageCommentsPerUser);
-        Assertions.assertEquals(0.1, averageCommentsPerPost);
+        Assertions.assertEquals(100, statisticsCalculator.getAveragePostsPerUser());
+        Assertions.assertEquals(10, statisticsCalculator.getAverageCommentsPerUser());
+        Assertions.assertEquals(0.1, statisticsCalculator.getAverageCommentsPerPost());
     }
 
     @Test
     void testCalculateAdvStatistics_withZeroPosts() {
         //Given
-        when(statisticsMock.postsCount()).thenReturn(0);                                // Posts number
-        when(statisticsMock.usersNames()).thenReturn(fillUsersList(10));   // Users number
-        when(statisticsMock.commentsCount()).thenReturn(0);                            // Comments number
-        statisticsCalculator.calculateAdvStatistics(statisticsMock);
+        when(statisticsMock.postsCount()).thenReturn(0);
+        when(statisticsMock.usersNames()).thenReturn(fillUsersList(10));
+        when(statisticsMock.commentsCount()).thenReturn(0);
 
         //When
-        double averagePostsPerUser = statisticsCalculator.getAveragePostsPerUser();
-        double averageCommentsPerUser = statisticsCalculator.getAverageCommentsPerUser();
-        double averageCommentsPerPost = statisticsCalculator.getAverageCommentsPerPost();
+        statisticsCalculator.calculateAdvStatistics(statisticsMock);
 
         //Then
-        statisticsCalculator.showStatistics();
-
-        Assertions.assertEquals(0, averagePostsPerUser);
-        Assertions.assertEquals(0, averageCommentsPerUser);
-        Assertions.assertEquals(0, averageCommentsPerPost);
+        Assertions.assertEquals(0, statisticsCalculator.getAveragePostsPerUser());
+        Assertions.assertEquals(0, statisticsCalculator.getAverageCommentsPerUser());
+        Assertions.assertEquals(0, statisticsCalculator.getAverageCommentsPerPost());
     }
 
     @Test
     void testCalculateAdvStatistics_withZeroComments() {
         //Given
-        when(statisticsMock.postsCount()).thenReturn(100);                              // Posts number
-        when(statisticsMock.usersNames()).thenReturn(fillUsersList(10));   // Users number
-        when(statisticsMock.commentsCount()).thenReturn(0);                             // Comments number
-        statisticsCalculator.calculateAdvStatistics(statisticsMock);
+        when(statisticsMock.postsCount()).thenReturn(100);
+        when(statisticsMock.usersNames()).thenReturn(fillUsersList(10));
+        when(statisticsMock.commentsCount()).thenReturn(0);
 
         //When
-        double averagePostsPerUser = statisticsCalculator.getAveragePostsPerUser();
-        double averageCommentsPerUser = statisticsCalculator.getAverageCommentsPerUser();
-        double averageCommentsPerPost = statisticsCalculator.getAverageCommentsPerPost();
+        statisticsCalculator.calculateAdvStatistics(statisticsMock);
 
         //Then
-        statisticsCalculator.showStatistics();
-
-        Assertions.assertEquals(10, averagePostsPerUser);
-        Assertions.assertEquals(0, averageCommentsPerUser);
-        Assertions.assertEquals(0, averageCommentsPerPost);
+        Assertions.assertEquals(10, statisticsCalculator.getAveragePostsPerUser());
+        Assertions.assertEquals(0, statisticsCalculator.getAverageCommentsPerUser());
+        Assertions.assertEquals(0, statisticsCalculator.getAverageCommentsPerPost());
     }
 
     @Test
     void testCalculateAdvStatistics_withCommentsMoreThanPostsCondition() {
         //Given
-        when(statisticsMock.postsCount()).thenReturn(10);                             // Posts number
-        when(statisticsMock.usersNames()).thenReturn(fillUsersList(5));   // Users number
-        when(statisticsMock.commentsCount()).thenReturn(50);                          // Comments number
-        statisticsCalculator.calculateAdvStatistics(statisticsMock);
+        when(statisticsMock.postsCount()).thenReturn(10);
+        when(statisticsMock.usersNames()).thenReturn(fillUsersList(5));
+        when(statisticsMock.commentsCount()).thenReturn(50);
 
         //When
-        double averagePostsPerUser = statisticsCalculator.getAveragePostsPerUser();
-        double averageCommentsPerUser = statisticsCalculator.getAverageCommentsPerUser();
-        double averageCommentsPerPost = statisticsCalculator.getAverageCommentsPerPost();
+        statisticsCalculator.calculateAdvStatistics(statisticsMock);
 
         //Then
-        statisticsCalculator.showStatistics();
-
-        Assertions.assertEquals(2, averagePostsPerUser);
-        Assertions.assertEquals(10, averageCommentsPerUser);
-        Assertions.assertEquals(5, averageCommentsPerPost);
+        Assertions.assertEquals(2, statisticsCalculator.getAveragePostsPerUser());
+        Assertions.assertEquals(10, statisticsCalculator.getAverageCommentsPerUser());
+        Assertions.assertEquals(5, statisticsCalculator.getAverageCommentsPerPost());
     }
 
     @Test
     void testCalculateAdvStatistics_withCommentsLessThanPostsCondition() {
         //Given
-        when(statisticsMock.postsCount()).thenReturn(100);                             // Posts number
-        when(statisticsMock.usersNames()).thenReturn(fillUsersList(5));   // Users number
-        when(statisticsMock.commentsCount()).thenReturn(50);                          // Comments number
-        statisticsCalculator.calculateAdvStatistics(statisticsMock);
+        when(statisticsMock.postsCount()).thenReturn(100);
+        when(statisticsMock.usersNames()).thenReturn(fillUsersList(5));
+        when(statisticsMock.commentsCount()).thenReturn(50);
 
         //When
-        double averagePostsPerUser = statisticsCalculator.getAveragePostsPerUser();
-        double averageCommentsPerUser = statisticsCalculator.getAverageCommentsPerUser();
-        double averageCommentsPerPost = statisticsCalculator.getAverageCommentsPerPost();
+        statisticsCalculator.calculateAdvStatistics(statisticsMock);
 
         //Then
-        statisticsCalculator.showStatistics();
-
-        Assertions.assertEquals(20, averagePostsPerUser);
-        Assertions.assertEquals(10, averageCommentsPerUser);
-        Assertions.assertEquals(0.5, averageCommentsPerPost);
+        Assertions.assertEquals(20, statisticsCalculator.getAveragePostsPerUser());
+        Assertions.assertEquals(10, statisticsCalculator.getAverageCommentsPerUser());
+        Assertions.assertEquals(0.5, statisticsCalculator.getAverageCommentsPerPost());
     }
 
     @Test
     void testCalculateAdvStatistics_withZeroUsers() {
         //Given
-        when(statisticsMock.postsCount()).thenReturn(0);                               // Posts number
-        when(statisticsMock.usersNames()).thenReturn(fillUsersList(0));   // Users number
-        when(statisticsMock.commentsCount()).thenReturn(0);                            // Comments number
-        statisticsCalculator.calculateAdvStatistics(statisticsMock);
+        when(statisticsMock.postsCount()).thenReturn(0);
+        when(statisticsMock.usersNames()).thenReturn(fillUsersList(0));
+        when(statisticsMock.commentsCount()).thenReturn(0);
 
         //When
-        double averagePostsPerUser = statisticsCalculator.getAveragePostsPerUser();
-        double averageCommentsPerUser = statisticsCalculator.getAverageCommentsPerUser();
-        double averageCommentsPerPost = statisticsCalculator.getAverageCommentsPerPost();
+        statisticsCalculator.calculateAdvStatistics(statisticsMock);
 
         //Then
-        statisticsCalculator.showStatistics();
-
-        Assertions.assertEquals(0, averagePostsPerUser);
-        Assertions.assertEquals(0, averageCommentsPerUser);
-        Assertions.assertEquals(0, averageCommentsPerPost);
+        Assertions.assertEquals(0, statisticsCalculator.getAveragePostsPerUser());
+        Assertions.assertEquals(0, statisticsCalculator.getAverageCommentsPerUser());
+        Assertions.assertEquals(0, statisticsCalculator.getAverageCommentsPerPost());
     }
 
     @Test
     void testCalculateAdvStatistics_withOneHundredUsers() {
         //Given
-        when(statisticsMock.postsCount()).thenReturn(25);                                // Posts number
-        when(statisticsMock.usersNames()).thenReturn(fillUsersList(100));   // Users number
-        when(statisticsMock.commentsCount()).thenReturn(50);                             // Comments number
-        statisticsCalculator.calculateAdvStatistics(statisticsMock);
+        when(statisticsMock.postsCount()).thenReturn(25);
+        when(statisticsMock.usersNames()).thenReturn(fillUsersList(100));
+        when(statisticsMock.commentsCount()).thenReturn(50);
 
         //When
-        double averagePostsPerUser = statisticsCalculator.getAveragePostsPerUser();
-        double averageCommentsPerUser = statisticsCalculator.getAverageCommentsPerUser();
-        double averageCommentsPerPost = statisticsCalculator.getAverageCommentsPerPost();
+        statisticsCalculator.calculateAdvStatistics(statisticsMock);
 
         //Then
-        statisticsCalculator.showStatistics();
-
-        Assertions.assertEquals(0.25, averagePostsPerUser);
-        Assertions.assertEquals(0.5, averageCommentsPerUser);
-        Assertions.assertEquals(2, averageCommentsPerPost);
+        Assertions.assertEquals(0.25, statisticsCalculator.getAveragePostsPerUser());
+        Assertions.assertEquals(0.5, statisticsCalculator.getAverageCommentsPerUser());
+        Assertions.assertEquals(2, statisticsCalculator.getAverageCommentsPerPost());
     }
 }

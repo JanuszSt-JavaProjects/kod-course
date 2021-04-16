@@ -35,11 +35,11 @@ public class StatisticsCalculator {
         }
     }
 
-    double calculateAverageCommentsPerPost(int numberOgComments, int numberOfPosts) {
+    double calculateAverageCommentsPerPost(int numberOfComments, int numberOfPosts) {
         if (postsTotal == 0) {
             return 0;
         } else {
-            return (double) numberOgComments / (double) numberOfPosts;
+            return (double) numberOfComments / (double) numberOfPosts;
         }
     }
 
