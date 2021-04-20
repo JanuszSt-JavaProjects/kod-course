@@ -22,8 +22,6 @@ public class WorldTestSuite {
         Country australia = new Country(new BigDecimal("66666"));
         Continent australiaContinent = new Continent(australia);
 
-
-        //When
         World world = new World(asiaContinent, europeContinent, australiaContinent);
         BigDecimal expectedWorldQuantity = new BigDecimal("11111")
                 .add(new BigDecimal("22222")
@@ -32,7 +30,10 @@ public class WorldTestSuite {
                                         .add(new BigDecimal("55555")
                                                 .add(new BigDecimal("66666"))))));
 
+        //When
+        BigDecimal actualWorldQuantity = world.getPeopleQuantity();
+
         //Then
-        Assertions.assertEquals(expectedWorldQuantity, world.getPeopleQuantity());
+        Assertions.assertEquals(expectedWorldQuantity, actualWorldQuantity);
     }
 }

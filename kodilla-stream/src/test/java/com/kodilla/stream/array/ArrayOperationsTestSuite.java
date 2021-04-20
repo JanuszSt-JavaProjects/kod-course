@@ -21,13 +21,15 @@ public class ArrayOperationsTestSuite {
         int[] testTable = new int[20];
         Random random = new Random();
 
-        //When
         for (int i = 0; i < testTable.length; i++) {
             testTable[i] = random.nextInt(100);
         }
         double expectedAvg = (double) Arrays.stream(testTable).sum() / testTable.length;
 
+        //When
+        double actualAvg = ArrayOperations.getAverage(testTable);
+
         //Then
-        Assertions.assertEquals(expectedAvg, ArrayOperations.getAverage(testTable));
+        Assertions.assertEquals(expectedAvg, actualAvg);
     }
 }
