@@ -22,6 +22,8 @@ public class FirstChallenge {
             System.out.println(result);
         } catch (Exception e) {
             System.out.println("Divide by ZERO exception!");
+        } finally {
+            System.out.println("The 'divide()' method has finished.");
         }
     }
 }
