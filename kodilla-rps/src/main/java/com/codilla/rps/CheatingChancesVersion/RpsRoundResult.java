@@ -1,4 +1,4 @@
-package com.codilla.rps.EqualChancesVersion;
+package com.codilla.rps.CheatingChancesVersion;
 
 import java.util.Objects;
 

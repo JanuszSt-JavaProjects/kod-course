@@ -1,4 +1,4 @@
-package com.codilla.rps.EqualChancesVersion;
+package com.codilla.rps.CheatingChancesVersion;
 
 import java.util.*;
 
@@ -7,7 +7,7 @@ public class RpsGameCore {
     private boolean end = false;
     private int roundsNumber = 0;
 
-   private RpsConditions rpsConditions = new RpsConditions();
+    private RpsConditions rpsConditions = new RpsConditions();
 
     private int playerTotalScore;
     private int computerTotalScore;
@@ -114,7 +114,8 @@ public class RpsGameCore {
 
         } while (!intToChoose.contains(playerResult));
 
-        int computerResult = new Random().nextInt(3) + 1;
+        int computerResult = getComputerResult(playerResult);
+
         RpsRoundResult roundResult = new RpsRoundResult(playerResult, computerResult);
         System.out.println();
 
@@ -130,6 +131,27 @@ public class RpsGameCore {
         System.out.println("After this round total results are: \nYou = " + playerTotalScore + "   Computer = " + computerTotalScore);
     }
 
+    private int getComputerResult(int playerResult) {
+
+        List<Integer> stack = new ArrayList<>();
+
+        switch (playerResult) {
+            case 1:
+                stack = Arrays.asList(1, 3, 2, 2);
+                break;
+            case 2:
+                stack = Arrays.asList(2, 1, 3, 3);
+                break;
+            case 3:
+                stack = Arrays.asList(3, 2, 1, 1);
+                break;
+        }
+        LinkedList<Integer> selectedStack = new LinkedList<>(stack);
+
+        Collections.shuffle(selectedStack);
+
+        return selectedStack.getFirst();
+    }
 
     private void finishGame() {
 
