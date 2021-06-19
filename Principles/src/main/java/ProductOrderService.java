@@ -14,8 +14,8 @@ public class ProductOrderService {
     boolean createOrder(Customer customer, Product product) {
         order = new Order();
         order.setCustomer(customer);
-        if (!customerService.isInCustomerDatabase(customer)) {
-            customerService.addToCustomerDatabase(customer);
+        if (!customerService.exists(customer)) {
+            customerService.add(customer);
             System.out.println("customer added --------------");
         }
         if (!productService.isAccessible(product)) {

@@ -1,6 +1,6 @@
 public interface CustomerDatabaseServices {
 
-    boolean isInCustomerDatabase(Customer customer);
+    boolean exists(Customer customer);
 
-    boolean addToCustomerDatabase(Customer customer);
+    boolean add(Customer customer);
 }

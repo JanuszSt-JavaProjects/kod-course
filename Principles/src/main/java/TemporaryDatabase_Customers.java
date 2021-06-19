@@ -11,12 +11,12 @@ public class TemporaryDatabase_Customers implements CustomerDatabaseServices {
 
 
     @Override
-    public boolean isInCustomerDatabase(Customer customer) {
+    public boolean exists(Customer customer) {
         return customersDatabase.contains(customer);
     }
 
     @Override
-    public boolean addToCustomerDatabase(Customer customer) {
+    public boolean add(Customer customer) {
         return customersDatabase.add(customer);
     }
 
