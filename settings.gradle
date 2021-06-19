@@ -5,4 +5,6 @@ include 'user'
 include 'kodilla-stream'
 include 'kodilla-excepition'
 include 'kodilla-rps'
+include 'BlackJack'
+include 'Principles'
 
