@@ -1,8 +1,8 @@
 package Food2Door.producers;
 
-import Food2Door.Producers;
+import Food2Door.Producer;
 
-public class GlutenFreeShop extends Producers {
+public class GlutenFreeShop extends Producer {
 
     private final String producerData = "GlutenFreeShop";
 

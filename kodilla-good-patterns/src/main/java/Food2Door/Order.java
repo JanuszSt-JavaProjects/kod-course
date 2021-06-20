@@ -3,10 +3,10 @@ package Food2Door;
 import java.util.List;
 
 public class Order {
-    private final Producers producer;
+    private final Producer producer;
     private final List<Product> productsList;
 
-    public Order(Producers producer, List<Product> productsList) {
+    public Order(Producer producer, List<Product> productsList) {
         this.producer = producer;
         this.productsList = productsList;
     }

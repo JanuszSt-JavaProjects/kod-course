@@ -3,11 +3,11 @@ package Food2Door;
 import java.util.List;
 
 public class Processor {
-    private final Producers producer;
+    private final Producer producer;
     private final Order order;
     private final Dispatch dispatch;
 
-    public Processor(Producers producer, List<Product> productList, String destination) {
+    public Processor(Producer producer, List<Product> productList, String destination) {
         this.producer = producer;
         order = new Order(producer, productList);
         dispatch = new Dispatch(destination, order);

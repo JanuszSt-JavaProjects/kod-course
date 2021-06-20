@@ -1,8 +1,8 @@
 package Food2Door.producers;
 
-import Food2Door.Producers;
+import Food2Door.Producer;
 
-public class HealthyShop extends Producers {
+public class HealthyShop extends Producer {
 
     private final String producerData = "HealthyShop";
 
