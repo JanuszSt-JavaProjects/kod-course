@@ -1,8 +1,8 @@
 package Fly_company;
 
+import java.util.HashSet;
 import java.util.Set;
 import java.util.stream.Collectors;
-import java.util.stream.Stream;
 
 public class ConnectionFinder {
 
@@ -13,14 +13,17 @@ public class ConnectionFinder {
         connections = connectObject.getConnections();
     }
 
-    void directConnectionFind(City departureCity, City arrivalCity) {
+    Set<Connection> findDirectConnection(City departureCity, City arrivalCity) {
 
-        connections.stream()
+        return connections.stream()
                 .filter(x -> (x.getDeparture().equals(departureCity) && x.getArrival().equals(arrivalCity)))
-                .forEach(System.out::println);
+                .peek(System.out::println)
+                .collect(Collectors.toSet());
     }
 
-    void indirectConnectionFind(City departureCity, City arrivalCity) {
+    Set<Connection> findIndirectConnection(City departureCity, City arrivalCity) {
+
+        Set<Connection> connectionSet = new HashSet<>();
 
         Set<Connection> fromCity = connections.stream()
                 .filter(x -> x.getDeparture().equals(departureCity))
@@ -34,24 +37,28 @@ public class ConnectionFinder {
 
             for (Connection y : toCity) {
                 if (x.getArrival().equals(y.getDeparture())) {
+                    connectionSet.add(x);
                     System.out.println(departureCity + " to " + arrivalCity + " via: " + x.getArrival());
                 }
             }
         }
+        return connectionSet;
     }
 
 
-    public void connectionToCity(City arrivalCity) {
-        connections.stream()
+    Set<Connection> connectionToCity(City arrivalCity) {
+        return connections.stream()
                 .filter(x -> x.getArrival().equals(arrivalCity))
-                .forEach(System.out::println);
+                .peek(System.out::println)
+                .collect(Collectors.toSet());
     }
 
 
-    void connectionFromCity(City departureCity) {
-        connections.stream()
+    Set<Connection> connectionFromCity(City departureCity) {
+        return connections.stream()
                 .filter(x -> x.getDeparture().equals(departureCity))
-                .forEach(System.out::println);
+                .peek(System.out::println)
+                .collect(Collectors.toSet());
 
     }
 
