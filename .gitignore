@@ -37,3 +37,5 @@ out/
 
 ### VS Code ###
 .vscode/
+/kodilla-good-patterns/gradle/wrapper/gradle-wrapper.jar
+/kodilla-good-patterns/gradle/wrapper/gradle-wrapper.properties
