@@ -7,4 +7,5 @@ include 'kodilla-excepition'
 include 'kodilla-rps'
 include 'BlackJack'
 include 'Principles'
+include 'kodilla-spring-intro'
 
