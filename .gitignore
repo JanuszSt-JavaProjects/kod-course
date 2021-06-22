@@ -39,3 +39,4 @@ out/
 .vscode/
 /kodilla-good-patterns/gradle/wrapper/gradle-wrapper.jar
 /kodilla-good-patterns/gradle/wrapper/gradle-wrapper.properties
+/kodilla-spring/gradle/
