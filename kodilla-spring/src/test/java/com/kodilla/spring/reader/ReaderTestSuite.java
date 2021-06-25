@@ -1,7 +1,5 @@
-package com.kodilla.spring.library.reader;
+package com.kodilla.spring.reader;
 
-import com.kodilla.spring.reader.Reader;
-import com.kodilla.spring.reader.ReaderConfig;
 import org.junit.jupiter.api.Test;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
