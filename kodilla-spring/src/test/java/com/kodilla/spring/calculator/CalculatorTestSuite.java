@@ -1,22 +1,27 @@
 package com.kodilla.spring.calculator;
 
+import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-
+@SpringBootTest
 public class CalculatorTestSuite {
+
+    @Autowired
+    Calculator calculator;
 
     @Test
     void TestCalculations() {
         //Given
-        ApplicationContext context =
-                new AnnotationConfigApplicationContext("com.kodilla.spring");
+  /*      ApplicationContext context =
+                new AnnotationConfigApplicationContext("com.kodilla.spring.calculator");
         Calculator calculator = context.getBean(Calculator.class);
-
+*/
         //When
         double a = 10.00;
         double b = 4.00;
@@ -34,9 +39,6 @@ public class CalculatorTestSuite {
     }
 
 
-    @Autowired
-    Calculator calculator;
-
     @Test
     void testWithAnnotationAutowired() {
         //Given
@@ -53,7 +55,10 @@ public class CalculatorTestSuite {
 
         //Then
         assertEquals(expectedAdd, calculator.add(a, b));
+    }
 
-
+    @AfterEach
+    void after() {
+        System.out.println("\n------");
     }
 }
