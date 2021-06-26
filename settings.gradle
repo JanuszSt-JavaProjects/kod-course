@@ -8,6 +8,6 @@ include 'kodilla-rps'
 include 'BlackJack'
 include 'Principles'
 include 'kodilla-spring-intro'
-include 'kodilla-course-web'
+include 'kodilla-spring-web'
 include 'kodilla-good-patterns'
 

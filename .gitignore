@@ -39,10 +39,10 @@ out/
 .vscode/
 /kodilla-good-patterns/gradle/wrapper/gradle-wrapper.jar
 /kodilla-good-patterns/gradle/wrapper/gradle-wrapper.properties
-/kodilla-course-web/gradlew
-/kodilla-course-web/gradle
-/kodilla-course-web/.gitignore
-/kodilla-course-web/settings.gradle
-/kodilla-course-web/HELP.md
-/kodilla-course-web/gradlew.bat
+/kodilla-spring-web/gradlew
+/kodilla-spring-web/gradle
+/kodilla-spring-web/.gitignore
+/kodilla-spring-web/settings.gradle
+/kodilla-spring-web/HELP.md
+/kodilla-spring-web/gradlew.bat
 
