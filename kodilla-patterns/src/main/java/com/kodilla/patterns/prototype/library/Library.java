@@ -6,8 +6,8 @@ import java.util.Set;
 
 public final class Library implements Cloneable {
 
-    private String name;
-    private Set<Book> books = new HashSet<>();
+    private  String name;
+    private  Set<Book> books = new HashSet<>();
 
     public Library(final String name) {
         this.name = name;
@@ -37,8 +37,16 @@ public final class Library implements Cloneable {
     }
 
     public Library deepCopy() throws CloneNotSupportedException {
+
         Library newLibrary = this.clone();
-        newLibrary.books = new HashSet<>(books);
+        Set<Book> setNewBooks = new HashSet<>();
+
+        newLibrary.books = setNewBooks;
+
+        for (Book book : books) {
+            Book newBook = new Book(book.getTitle(), book.getAuthor(), book.getPublicationDate());
+            setNewBooks.add(newBook);
+        }
         return newLibrary;
     }
 

@@ -5,6 +5,8 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import java.time.LocalDate;
+import java.util.HashSet;
+import java.util.Set;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -60,6 +62,9 @@ public class LibraryTestSuite {
     void testDeepCopy() {
         //Given
         Library newLib = null;
+        Set<Integer> libraryHCSet = new HashSet<>();
+        Set<Integer> newLibraryHCSet = new HashSet<>();
+
 
         //When
         try {
@@ -68,7 +73,16 @@ public class LibraryTestSuite {
             exception.getCause();
         }
 
+        for (Book book : library.getBooks()) {
+            libraryHCSet.add(book.hashCode());
+        }
+
+        for (Book book : newLib.getBooks()) {
+            newLibraryHCSet.add(book.hashCode());
+        }
+
         newLib.setName("Second Library");
+
 
         //Then
         assertNotSame(library, newLib);
@@ -78,5 +92,14 @@ public class LibraryTestSuite {
 
         assertEquals(library.getBooks(), newLib.getBooks());
         assertNotSame(library.getBooks(), newLib.getBooks());
+
+
+        for (int lHC : libraryHCSet) {
+            for (int nLHC : newLibraryHCSet) {
+                assertNotSame(lHC, nLHC);
+            }
+        }
+
+
     }
 }
