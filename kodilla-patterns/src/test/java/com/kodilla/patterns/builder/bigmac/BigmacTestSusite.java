@@ -9,10 +9,10 @@ public class BigmacTestSusite {
     @Test
     void createBurger() {
         //Given
-        Bigmac.BigmacPreparator preparator = new Bigmac.BigmacPreparator();
+        Bigmac.BigmacBuilder builder = new Bigmac.BigmacBuilder();
 
         //When
-        Bigmac bigMac = preparator
+        Bigmac bigMac = builder
                 .bun(Bigmac.Bun.SESAME)
                 .burgers(2)
                 .ingredient(Bigmac.Ingredient.CUCUMBER)
