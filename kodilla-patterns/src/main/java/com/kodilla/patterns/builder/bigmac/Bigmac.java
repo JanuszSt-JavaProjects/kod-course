@@ -53,7 +53,7 @@ public final class Bigmac {
             return this;
         }
 
-        public Bigmac bigMacBuilder() {
+        public Bigmac build() {
             return new Bigmac(bun, burgers, sauce, ingredients);
         }
     }

@@ -19,7 +19,7 @@ public class BigmacTestSuite {
                 .ingredient(Bigmac.Ingredient.BACON)
                 .ingredient(Bigmac.Ingredient.CHEESE)
                 .sauce(Bigmac.Sauce.ONE_THOUSAND_ISLANDS)
-                .bigMacBuilder();
+                .build();
 
         //Then
         assertTrue(bigMac.getIngredients().size() == 3);
