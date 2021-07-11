@@ -57,7 +57,7 @@ public class TaskFactoryTestSuite {
         assertEquals(taskName,shopping1.getTaskName());
     }
 
-    @Test
+/*    @Test
     void wrongTaskName(){
 
         // Given
@@ -67,9 +67,9 @@ public class TaskFactoryTestSuite {
         //WHEN &THEN
         assertNull(task);
 
-    }
+    }*/
 
-/*    @Test                                                            // Nie działa
+    @Test                                                            // Nie działa
     void wrongTaskName1(){
         //GIVEN
         Task task = new TaskFactory().createTask("INCORRECT");
@@ -77,9 +77,9 @@ public class TaskFactoryTestSuite {
         // WHEN & THEN
 
         assertThrows(IllegalStateException.class, ()->{
-            throw new IllegalStateException();
+              new TaskFactory().createTask("INCORRECT");
         });
 
-    }*/
+    }
 
 }

@@ -16,8 +16,8 @@ public class TaskFactory {
             case SHOPPING:
                 return new ShoppingTask("Accessories Buy","Paints",50.00);
             default:
-                return null;
-            //    throw new IllegalStateException("Unexpected value: " + taskType);  //<- jak to przetestować ?
+//                return null;
+                throw new IllegalStateException("Unexpected value: " + taskType);  //<- jak to przetestować ?
         }
     }
 
