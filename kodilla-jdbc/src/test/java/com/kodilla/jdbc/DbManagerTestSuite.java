@@ -51,6 +51,19 @@ class DbManagerTestSuite {
         DbManager dbManager = DbManager.getInstance();
         Statement statement = dbManager.getConnection().createStatement();
 
+        statement.addBatch("truncate table POSTS;");
+        statement.addBatch("INSERT INTO POSTS (USER_ID, BODY) VALUES (3, \"This is my first post !\");");
+        statement.addBatch("INSERT INTO POSTS (USER_ID, BODY) VALUES (2, \"This is my first post too!\");");
+        statement.addBatch("INSERT INTO POSTS (USER_ID, BODY) VALUES (2, \"How are you?\");");
+        statement.addBatch("INSERT INTO POSTS (USER_ID, BODY) VALUES (1, \"Quite good, thanks bro!\");");
+        statement.addBatch("INSERT INTO POSTS (USER_ID, BODY) VALUES (4, \"Yo all! Here is Thomas!\");");
+        statement.addBatch("INSERT INTO POSTS (USER_ID, BODY) VALUES (4, \"Next post from me\");");
+        statement.addBatch("INSERT INTO POSTS (USER_ID, BODY) VALUES (5, \"I'm startin' here too ;-)\");");
+        statement.executeBatch();
+
+
+    /*
+
         String bodyText = "truncate table POSTS;";
         statement.execute(bodyText);
 
@@ -75,7 +88,7 @@ class DbManagerTestSuite {
 
         bodyText = "INSERT INTO POSTS (USER_ID, BODY) VALUES (5, \"I'm startin' here too ;-)\");";
         statement.execute(bodyText);
-
+*/
 
         //When
         String sqlStatement = "select USERS.FIRSTNAME, USERS.LASTNAME  from USERS join POSTS on POSTS.USER_ID = USERS.ID " +
