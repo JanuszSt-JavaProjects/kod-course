@@ -1,6 +1,7 @@
 package com.kodilla.hibernate.tasklist.dao;
 
 import com.kodilla.hibernate.tasklist.TaskList;
+import com.kodilla.jdbc.DbManager;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -24,7 +25,8 @@ public class TaskListDaoTestSuite {
     void testFindByListName() throws SQLException {
 
         //Given
-        Connection conn;
+ /*       Connection conn;
+
         Properties connectionProps = new Properties();
         connectionProps.put("user", "kodilla_user");
         connectionProps.put("password", "kodilla_Pass123");
@@ -32,7 +34,9 @@ public class TaskListDaoTestSuite {
                 "jdbc:mysql://localhost:3306/kodilla_course?serverTimezone=Europe/Warsaw" +
                         "&useSSL=False",
                 connectionProps);
+*/
 
+        Connection conn = DbManager.getInstance().getConnection();
 
         String listName = "User1 Tasks";
         String description = "Tasks of J. Rambo";
