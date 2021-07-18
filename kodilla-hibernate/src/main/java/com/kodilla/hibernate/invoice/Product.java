@@ -42,11 +42,18 @@ public class Product {
 
 
     @Override
+    public String toString() {
+        return "Product{" +
+                "name='" + name + '\'' +
+                '}';
+    }
+
+    @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (!(o instanceof Product)) return false;
         Product product = (Product) o;
-        return getId() == product.getId() && getName().equals(product.getName());
+        return getId() == product.getId() && Objects.equals(getName(), product.getName());
     }
 
     @Override

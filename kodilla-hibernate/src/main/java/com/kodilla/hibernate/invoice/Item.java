@@ -5,6 +5,7 @@ import org.springframework.context.annotation.Primary;
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import java.math.BigDecimal;
+import java.util.Objects;
 
 
 @Entity
@@ -75,5 +76,27 @@ public class Item {
         this.value = value;
     }
 
+    @Override
+    public String toString() {
+        return "Item{" +
+                "product=" + product +
+                ", price=" + price +
+                ", quantity=" + quantity +
+                ", value=" + value +
+                '}';
+    }
 
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof Item)) return false;
+        Item item = (Item) o;
+        return getId() == item.getId() && getQuantity() == item.getQuantity() && Objects.equals(getProduct(), item.getProduct()) && Objects.equals(getPrice(), item.getPrice()) && Objects.equals(getValue(), item.getValue());
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(getId(), getProduct(), getPrice(), getQuantity(), getValue());
+    }
 }

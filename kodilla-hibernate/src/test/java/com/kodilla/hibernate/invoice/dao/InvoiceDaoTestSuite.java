@@ -3,22 +3,16 @@ package com.kodilla.hibernate.invoice.dao;
 import com.kodilla.hibernate.invoice.Invoice;
 import com.kodilla.hibernate.invoice.Item;
 import com.kodilla.hibernate.invoice.Product;
-import com.kodilla.jdbc.DbManager;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
 import java.math.BigDecimal;
-import java.sql.Connection;
-import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
-import java.util.HashSet;
 import java.util.List;
-import java.util.Set;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertTrue;
 
 
 @SpringBootTest
@@ -28,62 +22,85 @@ public class InvoiceDaoTestSuite {
     @Autowired
     InvoiceDao invoiceDao;
 
-    DbManager dbManager;
-
-
     @Test
     void testInvoiceDaoSave() throws SQLException {
 
         //Given
-        try {
-            dbManager = DbManager.getInstance();
-        } catch (SQLException throwables) {
-            throwables.printStackTrace();
-        }
-
         Product bread = new Product("Bread");
         Product butter = new Product("Butter");
         Product milk = new Product("Milk");
 
-        Item firstItem = new Item(bread, new BigDecimal(5), 3);
-        Item secondItem = new Item(butter, new BigDecimal(12), 1);
+        Item firstItem = new Item(bread, new BigDecimal("1.00"), 3);
+        Item secondItem = new Item(butter, new BigDecimal("12.00"), 1);
 
 
         List<Item> itemList = new ArrayList<>();
         itemList.add(firstItem);
         itemList.add(secondItem);
 
-        Invoice invoice = new Invoice("Nr001/2021", itemList);
-        Connection connection = dbManager.getConnection();
 
+        invoiceDao.deleteAll();
+
+        Invoice invoice = new Invoice("Nr001/2021", itemList);
+        Invoice inv;
 
         //When
-
         invoiceDao.save(invoice);
+        inv = invoiceDao.findByNumber("Nr001/2021");
+        System.out.println("\n");
 
-        ResultSet resultSet = connection.createStatement().executeQuery("select " +
-                "* from INVOICES");
+        System.out.println(inv.getItems());
+        System.out.println();
+        System.out.println(invoice.getItems());
+        System.out.println();
 
+        for (Item it: inv.getItems()
+             ) {
+            System.out.println(it);
+            System.out.println();
+            System.out.println(it.getProduct().getClass());
+            System.out.println(it.getPrice().getClass());
+            System.out.println(it.getValue().getClass());
+            System.out.println(it.getProduct().getName());
+            System.out.println(it.getProduct().getName().getClass());
+            System.out.println();        }
 
-        int rows = 0;
-        String receivedInvoiceNumber = "";
-        Set<String> invoiceNumbersSet = new HashSet<>();
+        System.out.println();
 
-        while (resultSet.next()) {
-            receivedInvoiceNumber = resultSet.getString("number");
-            invoiceNumbersSet.add(receivedInvoiceNumber);
-            rows++;
+        for (Item it: invoice.getItems()
+        ) {
+            System.out.println(it);
+            System.out.println();
+            System.out.println(it.getProduct().getClass());
+            System.out.println(it.getPrice().getClass());
+            System.out.println(it.getValue().getClass());
+            System.out.println(it.getProduct().getName());
+            System.out.println(it.getProduct().getName().getClass());
+            System.out.println();
         }
+        System.out.println("\n");
 
 
-        //Then
-        assertEquals(1, rows);
-        assertEquals("Nr001/2021", receivedInvoiceNumber);
-        assertTrue(1 == invoiceNumbersSet.size());
+        // 2.
+        assertEquals(invoice.getId(), inv.getId());
+        assertEquals(invoice.getNumber(), inv.getNumber());
+        assertEquals(invoice.getClass(), inv.getClass());
 
+
+
+        System.out.println(inv.getItems().size());
+        assertEquals(invoice.getItems().size(), inv.getItems().size());
+
+        assertEquals(invoice.getItems().get(0), inv.getItems().get(0));
+        assertEquals(invoice.getItems().get(1), inv.getItems().get(1));
+
+        assertEquals(invoice.getItems(), inv.getItems()); // FALSE
+
+        assertEquals(invoice,inv);  // FALSE
 
         // Cleanup
         invoiceDao.deleteAll();
-        connection.close();
+
+
     }
 }

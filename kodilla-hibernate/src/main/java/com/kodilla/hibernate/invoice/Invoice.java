@@ -6,9 +6,11 @@ import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 @Entity
 @Table(name = "INVOICES")
+
 public class Invoice {
 
     private int id;
@@ -54,4 +56,24 @@ public class Invoice {
         this.items = items;
     }
 
+    @Override
+    public String toString() {
+        return "Invoice{" +
+                "number='" + number + '\'' +
+                ", items=" + items +
+                '}';
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof Invoice)) return false;
+        Invoice invoice = (Invoice) o;
+        return getId() == invoice.getId() && Objects.equals(getNumber(), invoice.getNumber()) && Objects.equals(getItems(), invoice.getItems());
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(getId(), getNumber(), getItems());
+    }
 }
