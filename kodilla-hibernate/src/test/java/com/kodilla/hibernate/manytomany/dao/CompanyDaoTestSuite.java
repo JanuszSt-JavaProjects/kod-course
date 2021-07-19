@@ -2,17 +2,31 @@ package com.kodilla.hibernate.manytomany.dao;
 
 import com.kodilla.hibernate.manytomany.Company;
 import com.kodilla.hibernate.manytomany.Employee;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
-import static org.junit.jupiter.api.Assertions.*;
+import java.util.List;
+
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNotEquals;
 
 @SpringBootTest
 class CompanyDaoTestSuite {
 
     @Autowired
     private CompanyDao companyDao;
+
+    @Autowired
+    private EmployeeDao employeeDao;
+
+    @BeforeEach
+    void before(){
+    employeeDao.deleteAll();
+    companyDao.deleteAll();
+    }
+
 
     @Test
     void testSaveManyToMany() {
@@ -59,4 +73,47 @@ class CompanyDaoTestSuite {
         //    //do nothing
         //}
     }
+
+    @Test
+    void namedQueriesTests() {
+        //Given
+        Employee johnSmith = new Employee("John", "Smith");
+        Employee stephanieClarckson = new Employee("Stephanie", "Clarckson");
+        Employee lindaKovalsky = new Employee("Linda", "Kovalsky");
+
+        Company softwareMachine = new Company("Software Machine");
+        Company dataMaesters = new Company("Data Maesters");
+        Company dataMiners = new Company("Data Miners");
+        Company greyMatter = new Company("Grey Matter");
+
+
+        //When
+        employeeDao.save(johnSmith);
+        employeeDao.save(stephanieClarckson);
+        employeeDao.save(lindaKovalsky);
+
+        companyDao.save(softwareMachine);
+        companyDao.save(dataMaesters);
+        companyDao.save(greyMatter);
+        companyDao.save(dataMiners);
+
+        String companyNameBeginningPattern = "Dat";
+        String wantedName = "Kovalsky";
+
+        List <Company> companies= companyDao.retrieveCompanyWithNameBeginning(companyNameBeginningPattern);
+        int resultsNumber =companies.size();
+        String employeeName = employeeDao.retrieveEmployeeByName(wantedName).getLastname();
+
+
+        //Then
+
+        assertEquals(wantedName, employeeName);
+        assertEquals(2, resultsNumber);
+
+        //Cleanup
+        employeeDao.deleteAll();
+        companyDao.deleteAll();
+
+    }
+
 }

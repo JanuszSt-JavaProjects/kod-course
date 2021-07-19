@@ -8,18 +8,23 @@ import java.util.List;
 @Entity
 @Table(name = "EMPLOYEES")
 
+@NamedQuery(
+        name = "Employee.retrieveEmployeeByName",
+        query = "FROM Employee WHERE lastname =: LASTNAME"
+)
+
 public class Employee {
 
     private int id;
     private String firstname;
     private String lastname;
 
+
     @JoinTable(
             name = "JOIN_COMPANY_EMPLOYEE_joinedResultTable",
             joinColumns = {@JoinColumn(name = "EMPLOYEE_ID_Pierwsze", referencedColumnName = "EMPLOYEE_ID")},
             inverseJoinColumns = {@JoinColumn(name = "COMPANY_ID_dowolna_Nazwa", referencedColumnName = "COMPANY_ID")}
     )
-
 
     @ManyToMany(cascade = CascadeType.ALL)
     public List<Company> getCompanies() {

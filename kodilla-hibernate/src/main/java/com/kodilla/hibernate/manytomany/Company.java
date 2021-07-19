@@ -8,12 +8,21 @@ import java.util.List;
 
 @Entity
 @Table(name = "COMPANIES")
+
+@NamedNativeQuery(
+        name = "Company.retrieveCompanyWithNameBeginning",
+        query = "SELECT * FROM COMPANIES" +
+                " WHERE  SUBSTRING(COMPANY_NAME, 1,3) =:PATTERN",
+        resultClass = Company.class
+)
+
+
 public class Company {
 
     private int id;
     private String name;
 
-    List<Employee> employees =new ArrayList<>();
+    List<Employee> employees = new ArrayList<>();
 
 
     @ManyToMany(
