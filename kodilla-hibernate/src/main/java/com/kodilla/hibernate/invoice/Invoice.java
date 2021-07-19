@@ -37,7 +37,8 @@ public class Invoice {
         return number;
     }
 
-    @OneToMany(targetEntity = Item.class, cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    @JoinColumn
+    @OneToMany(targetEntity = Item.class, cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     public List<Item> getItems() {
         return items;
     }
