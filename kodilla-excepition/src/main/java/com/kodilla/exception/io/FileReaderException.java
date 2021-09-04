@@ -1,5 +1,5 @@
 package com.kodilla.exception.io;
 
-public class FileReaderException extends Exception{
+public class FileReaderException extends Exception {
 
 }

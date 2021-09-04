@@ -5,7 +5,7 @@ public class Triangle implements Shape {
     private double field;
 
     Triangle(double bottomLength, double height) {
-        field = 0.5*bottomLength*height;
+        field = 0.5 * bottomLength * height;
     }
 
     @Override

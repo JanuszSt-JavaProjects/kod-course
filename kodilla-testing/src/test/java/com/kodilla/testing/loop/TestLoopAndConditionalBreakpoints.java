@@ -1,7 +1,9 @@
 package com.kodilla.testing.loop;
 
 import org.junit.jupiter.api.Test;
-import  static org.junit.jupiter.api.Assertions.*;
+
+import static org.junit.jupiter.api.Assertions.*;
+
 public class TestLoopAndConditionalBreakpoints {
 
     @Test
@@ -16,6 +18,6 @@ public class TestLoopAndConditionalBreakpoints {
         }
 
         // Then
-        assertEquals(499500,sum);
+        assertEquals(499500, sum);
     }
 }

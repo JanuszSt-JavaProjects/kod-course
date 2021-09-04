@@ -28,7 +28,7 @@ public class ShapeCollectorTestSiute {
         void testRemoveFigure() {
             //Given
             ShapeCollector shapeCollector = new ShapeCollector();
-            Shape triangle = new Triangle(30.00,10.00);
+            Shape triangle = new Triangle(30.00, 10.00);
             Shape square = new Square(20.00);
             shapeCollector.addFigure(triangle);
             shapeCollector.addFigure(square);
@@ -44,7 +44,7 @@ public class ShapeCollectorTestSiute {
         void testGetFigure() {
             //Given
             ShapeCollector shapeCollector = new ShapeCollector();
-            Shape triangle = new Triangle(30.00,10.00);
+            Shape triangle = new Triangle(30.00, 10.00);
             Shape circle = new Circle(10.00);
             shapeCollector.addFigure(triangle);
             shapeCollector.addFigure(circle);

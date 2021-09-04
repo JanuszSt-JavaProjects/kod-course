@@ -22,6 +22,7 @@ class FileReaderTestSuite {
         // when & then
         assertThrows(FileReaderException.class, () -> fileReader.readFile(fileName));
     }
+
     @Test
     public void testReadFileWithName() {
         // given

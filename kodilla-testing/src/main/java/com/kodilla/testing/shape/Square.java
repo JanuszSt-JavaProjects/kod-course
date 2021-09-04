@@ -1,11 +1,11 @@
 package com.kodilla.testing.shape;
 
 public class Square implements Shape {
-    private final String name="Square";
+    private final String name = "Square";
     private double field;
 
-    Square(double sideLength){
-        field=sideLength*sideLength;
+    Square(double sideLength) {
+        field = sideLength * sideLength;
     }
 
     @Override
@@ -17,7 +17,6 @@ public class Square implements Shape {
     public double getField() {
         return field;
     }
-
 
 
 }

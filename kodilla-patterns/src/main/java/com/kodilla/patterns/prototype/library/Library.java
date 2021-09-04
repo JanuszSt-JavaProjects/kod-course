@@ -6,8 +6,8 @@ import java.util.Set;
 
 public final class Library implements Cloneable {
 
-    private  String name;
-    private  Set<Book> books = new HashSet<>();
+    private String name;
+    private Set<Book> books = new HashSet<>();
 
     public Library(final String name) {
         this.name = name;

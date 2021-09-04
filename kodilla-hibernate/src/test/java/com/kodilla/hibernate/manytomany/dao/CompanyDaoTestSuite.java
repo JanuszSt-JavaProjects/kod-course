@@ -22,9 +22,9 @@ class CompanyDaoTestSuite {
     private EmployeeDao employeeDao;
 
     @BeforeEach
-    void before(){
-    employeeDao.deleteAll();
-    companyDao.deleteAll();
+    void before() {
+        employeeDao.deleteAll();
+        companyDao.deleteAll();
     }
 
 
@@ -100,10 +100,16 @@ class CompanyDaoTestSuite {
         String companyNameBeginningPattern = "Dat";
         String wantedName = "Kovalsky";
 
-        List <Company> companies= companyDao.retrieveCompanyWithNameBeginning(companyNameBeginningPattern);
-        int resultsNumber =companies.size();
+        List<Company> companies = companyDao.retrieveCompanyWithNameBeginning(companyNameBeginningPattern);
+        int resultsNumber = companies.size();
         String employeeName = employeeDao.retrieveEmployeeByName(wantedName).getLastname();
 
+//        //Add ----------->
+//        Company anyComp = companyDao.findById(140).get();
+//        System.out.println("\n"+anyComp+"\n");
+//
+//
+//        // <------------
 
         //Then
 

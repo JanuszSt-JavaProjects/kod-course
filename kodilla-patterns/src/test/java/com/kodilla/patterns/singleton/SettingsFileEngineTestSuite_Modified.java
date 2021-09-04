@@ -9,16 +9,16 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 
 class SettingsFileEngineTestSuite {
 
-    static SettingsFileEngine en =  SettingsFileEngine.INSTANCE;
+    static SettingsFileEngine en = SettingsFileEngine.INSTANCE;
 
 
-        @BeforeAll
+    @BeforeAll
     public static void openSettingsFile() {
-       en.open("myapp.settings");
+        en.open("myapp.settings");
     }
 
     @AfterAll
-     static void closeSettingsFile() {
+    static void closeSettingsFile() {
         SettingsFileEngine.INSTANCE.close();
     }
 

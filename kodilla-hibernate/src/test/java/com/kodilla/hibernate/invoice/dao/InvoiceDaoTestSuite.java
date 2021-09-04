@@ -81,7 +81,6 @@ public class InvoiceDaoTestSuite {
         assertEquals("Nr001/2021", receivedInvoiceNumber);
         assertTrue(1 == invoiceNumbersSet.size());
 
-
         // Cleanup
         invoiceDao.deleteAll();
         connection.close();

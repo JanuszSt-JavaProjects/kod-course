@@ -20,7 +20,6 @@ public class TaskList {
     private List<Task> tasks = new ArrayList<>();
 
 
-
     public TaskList() {
     }
 

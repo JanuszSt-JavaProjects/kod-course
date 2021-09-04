@@ -12,7 +12,9 @@ public final class Bigmac {
 
 
     protected enum Bun {STANDARD, SESAME}
+
     protected enum Sauce {STANDARD, ONE_THOUSAND_ISLANDS, BARBECUE}
+
     protected enum Ingredient {LETTUCE, ONION, BACON, CUCUMBER, CHILI_PEPPERS, MUSHROOMS, PRAWNS, CHEESE}
 
 

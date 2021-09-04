@@ -12,7 +12,7 @@ import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-//@ExtendWith(SpringExtension.class)
+//@ExtendWith(SpringExtension.class) - zawiera już @SpringBootTest
 @SpringBootTest
 class TaskFinancialDetailsDaoTestSuite {
 
@@ -36,7 +36,6 @@ class TaskFinancialDetailsDaoTestSuite {
         //CleanUp
         taskFinancialDetailsDao.deleteById(id);
     }
-
 
 
 }

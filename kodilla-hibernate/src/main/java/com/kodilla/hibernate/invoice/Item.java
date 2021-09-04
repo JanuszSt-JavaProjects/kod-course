@@ -77,4 +77,6 @@ public class Item {
     }
 
 
+    //@ExtendWith(SpringExtension.class) w testach:TaskFinancialDetailsDaoTestSuite
+
 }

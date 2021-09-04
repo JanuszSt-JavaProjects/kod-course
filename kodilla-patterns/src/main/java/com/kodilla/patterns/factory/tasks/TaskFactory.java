@@ -12,9 +12,9 @@ public class TaskFactory {
             case DRIVING:
                 return new DrivingTask("Fast drive", "Oklahoma City", "Car");
             case PAINTING:
-                return new PaintingTask("Every hall paint","GREY","hall");
+                return new PaintingTask("Every hall paint", "GREY", "hall");
             case SHOPPING:
-                return new ShoppingTask("Accessories Buy","Paints",50.00);
+                return new ShoppingTask("Accessories Buy", "Paints", 50.00);
             default:
 //                return null;
                 throw new IllegalStateException("Unexpected value: " + taskType);  //<- jak to przetestować ?

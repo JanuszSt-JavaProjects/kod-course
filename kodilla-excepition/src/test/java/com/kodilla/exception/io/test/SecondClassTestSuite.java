@@ -35,6 +35,6 @@ public class SecondClassTestSuite {
                 () -> assertDoesNotThrow(() -> secondChallenge.probablyIWillThrowException(1.0, 5)),
                 () -> assertThrows(Exception.class, () -> secondChallenge.probablyIWillThrowException(1.8, 1.5)),
                 () -> assertThrows(Exception.class, () -> secondChallenge.probablyIWillThrowException(1.0, 1.5))
-                );
+        );
     }
 }

@@ -5,7 +5,7 @@ public class Circle implements Shape {
     private double field;
 
     Circle(double radius) {
-        field = radius*radius*3.14;
+        field = radius * radius * 3.14;
     }
 
     @Override
