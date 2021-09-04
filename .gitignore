@@ -44,3 +44,5 @@ out/
 /kodilla-spring/gradle/
 /gradlew.bat
 !**/gradlew.bat
+/kodilla-hibernate/src/main/lib/javax.json.bind-api-1.0.jar
+/kodilla-hibernate/src/main/lib/javax.json-api-1.1.4.jar
