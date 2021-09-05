@@ -16,6 +16,12 @@ import java.util.List;
         resultClass = Company.class
 )
 
+@NamedQuery(
+        name = "Company.retrieveCompanyByPartialName",
+        query = "FROM Company WHERE name like :ARG"
+
+)
+
 
 public class Company {
 
