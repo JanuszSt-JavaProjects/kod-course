@@ -1,5 +1,10 @@
 package com.kodilla.patterns2.facade;
 
+import com.kodilla.patterns2.facade.api.ItemDto;
+import com.kodilla.patterns2.facade.api.OrderDto;
+import com.kodilla.patterns2.facade.api.OrderFacade;
+import com.kodilla.patterns2.facade.api.OrderProcessingException;
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -11,6 +16,9 @@ class ShopServiceTestSuite {
 
     @Autowired
     private ShopService shopService;
+
+    @Autowired
+    OrderFacade orderFacade;
 
     @Test
     void testShopServiceSubmitOrder() {
@@ -54,5 +62,15 @@ class ShopServiceTestSuite {
         } else {
             System.out.println("Access denied. User is not authenticated.");
         }
+    }
+
+    @Test
+    void  facadeTest() throws OrderProcessingException {
+
+        orderFacade.processOrder(new OrderDto(),1L);
+
+        Assertions.assertThrows(OrderProcessingException.class,
+                ()->orderFacade.processOrder(new OrderDto(),1L));
+
     }
 }
