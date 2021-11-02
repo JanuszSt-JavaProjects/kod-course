@@ -1,6 +1,5 @@
 package com.kodilla.jdbc;
 
-
 import org.junit.jupiter.api.Test;
 
 import java.sql.ResultSet;
@@ -34,6 +33,37 @@ public class StoredProcTestSuite {
         assertEquals(0, howMany);
         rs.close();
         statement.close();
+    }
+
+    @Test
+    public void testUpdateBestsellers() throws SQLException {
+        //Given
+        DbManager dbManager = DbManager.getInstance();
+
+        String prepareBestsellerStatus = "update BOOKS SET BESTSELLER=FALSE";
+        String queryBefore      = "select * from RENTS group by BOOK_ID having count(READER_ID) > 2";
+        String queryAfter       = "select *  from BOOKS where BESTSELLER = TRUE ";
+        String callProcedure    = "CALL UpdateBestsellers()";
+
+        Statement smt = dbManager.getConnection().createStatement(
+                ResultSet.TYPE_SCROLL_INSENSITIVE,
+                ResultSet.CONCUR_READ_ONLY);
+
+        smt.executeUpdate(prepareBestsellerStatus);
+
+        //When
+        ResultSet resultSet1 = smt.executeQuery(queryBefore);
+        resultSet1.last();
+        int resultsByCount = resultSet1.getRow();
+
+        smt.execute(callProcedure);
+
+        ResultSet resultSet2 = smt.executeQuery(queryAfter);
+        resultSet2.last();
+        int resultsByStatus = resultSet2.getRow();
+
+        //Then
+        assertEquals(resultsByCount, resultsByStatus);
     }
 
 }
