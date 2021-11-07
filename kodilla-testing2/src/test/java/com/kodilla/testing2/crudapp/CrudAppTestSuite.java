@@ -125,8 +125,9 @@ public class CrudAppTestSuite {
                                 .contains("Task number"))
                 .forEach(element -> {
 //                            WebElement button = element.findElement(By.xpath(".//div/fieldset[1]/button[4]"));
-                            WebElement button = element.findElement(By.xpath(".//button[4]"));
-                            button.click();
+//                            WebElement button = element.findElement(By.xpath(".//button[4]"));
+                            WebElement delButton = element.findElement(By.xpath(".// button[text()='Delete']"));
+                            delButton.click();
                         }
                 );
     }
