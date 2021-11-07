@@ -31,9 +31,8 @@ public class CrudAppTestSuite {
 
     @Test
     public void shouldCreateTrelloCard() throws InterruptedException {
-        String taskName = "Task number 24362";
-//        String taskName = createCrudAppTestTask();
-//        sendTestTaskToTrello(taskName);
+        String taskName = createCrudAppTestTask();
+        sendTestTaskToTrello(taskName);
         Assertions.assertTrue(checkTaskExistsInTrello(taskName));
 
     }
@@ -110,6 +109,26 @@ public class CrudAppTestSuite {
         driverTrello.close();
 
         return result;
+    }
+
+
+    @Test
+    public void shouldRemoveCreatedTasks() {
+        driver.navigate().refresh();
+
+        while (!driver.findElement(By.xpath("//select[1]")).isDisplayed()) ;
+
+        driver.findElements(
+                        By.xpath("//form[@class=\"datatable__row\"]")).stream()
+                .filter(webElement ->
+                        webElement.findElement(By.xpath(".//p[@class=\"datatable__field-value\"]")).getText()
+                                .contains("Task number"))
+                .forEach(element -> {
+//                            WebElement button = element.findElement(By.xpath(".//div/fieldset[1]/button[4]"));
+                            WebElement button = element.findElement(By.xpath(".//button[4]"));
+                            button.click();
+                        }
+                );
     }
 }
 
